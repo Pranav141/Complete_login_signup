@@ -25,7 +25,7 @@ router.post('/signup',
         let hash=await bcrypt.hash(req.body.password,salt);
         const response=await User.create({name:req.body.name,email:req.body.email,password:hash})
         let userId=response._id.toString();
-        let url=`http://localhost:5000/confirmation/${userId}`
+        let url=`https://complete-login-signup.vercel.app/confirmation/${userId}`
         sendMail(req.body.email,url);
         res.json({success:true,response:response});
     }
