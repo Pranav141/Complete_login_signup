@@ -9,7 +9,7 @@ router.post('/login',async (req,res)=>{
     let response=await User.findOne({ email:req.body.email })
     .then(user => {
         //if user not exist than return status 400
-        if (!user) return res.status(400).json({ msg: "User not exist" })
+        if (!user) return res.status(400).json({ msg: "User doesn't exist" })
 
         //if user exist than compare password
         //password comes from the user
