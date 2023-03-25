@@ -22,10 +22,9 @@ const deleteUser=async()=>{
     for (const data of response) {
         let time=Date.now()-data.date.getTime();//7200000
         if(time>7200000 && data.confirmation===false){//2 hours =7200000 milliseconds
-            await User.deleteOne({_id:data._id})
+            await User.findByIdAndDelete(data._id)
         }
     }
-    console.log("here");
 }
 
 app.listen(process.env.PORT,()=>{
